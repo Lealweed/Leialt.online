@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, LayoutDashboard, ArrowRight } from "lucide-react";
 
 export default function VideoHero() {
   return (
@@ -15,6 +16,27 @@ export default function VideoHero() {
     >
       {/* Spacer — video speaks for itself */}
       <div className="flex-1" />
+
+      {/* CTA central */}
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.8, duration: 0.7, ease: "easeOut" }}
+        className="flex flex-col items-center gap-4 mb-12"
+      >
+        <Link
+          href="/dashboard"
+          className="group flex items-center gap-3 px-6 py-3.5 rounded-full text-white font-semibold text-sm transition-all hover:scale-105 active:scale-95"
+          style={{
+            background: "linear-gradient(135deg, #833AB4, #E1306C)",
+            boxShadow: "0 0 32px rgba(225,48,108,0.35)",
+          }}
+        >
+          <LayoutDashboard className="w-4 h-4" />
+          Ver Demo Interativo
+          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+        </Link>
+      </motion.div>
 
       {/* Scroll cue */}
       <motion.div
