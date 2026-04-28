@@ -2,44 +2,38 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { contactLinks } from "@/lib/contact";
 
 export default function Cta() {
   return (
-    <section className="py-24 relative overflow-hidden bg-background">
-      {/* Background decorations */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-5xl h-full mix-blend-screen opacity-50 z-0">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyan-500/10 via-background to-background" />
-      </div>
+    <section className="py-24 md:py-28 relative overflow-hidden bg-background">
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_50%,rgba(225,48,108,0.14),transparent_55%)]" />
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10">
+      <div className="max-w-[1200px] mx-auto px-6 md:px-10 relative z-10">
         <motion.div 
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="glass p-12 md:p-20 rounded-[2.5rem] border border-cyan-500/20 shadow-[0_0_100px_rgba(6,182,212,0.15)] text-center relative overflow-hidden"
+          transition={{ duration: 0.45 }}
+          className="glass p-10 md:p-16 rounded-3xl border border-brand-pink/20 text-center relative overflow-hidden"
         >
-          {/* subtle moving light inside card */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-cyan-400/5 to-blue-600/5 opacity-50" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-brand-purple/6 to-brand-pink/6 opacity-70" />
           
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-8 text-white max-w-4xl mx-auto leading-tight relative">
-            Pare de operar no <span className="text-rose-400">gargalo</span>.
-            <br /> Assuma o futuro da sua empresa.
+          <h2 className="font-display text-3xl md:text-5xl text-white max-w-[18ch] mx-auto leading-tight tracking-tight relative mb-5">
+            Pronto para escalar com IA?
           </h2>
-          <p className="text-slate-300 text-lg md:text-xl mb-12 max-w-2xl mx-auto font-light relative">
-            Seus concorrentes já estão implementando sistemas inteligentes. Entre em contato com a LeIALT e descubra exatamente o montante de dinheiro e tempo que você pode economizar.
+          <p className="text-slate-300 text-lg md:text-xl mb-10 max-w-[44ch] mx-auto relative">
+            Um plano direto para aumentar eficiencia comercial e reduzir trabalho manual.
           </p>
 
           <a 
-            href="https://wa.me/seunumerodecontato" 
+            href={contactLinks.whatsapp}
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-block relative"
+            className="inline-flex items-center justify-center gap-3 px-9 py-4 rounded-full bg-brand-pink text-white font-semibold hover:bg-brand-pink-dark transition-all hover:scale-[1.02] active:scale-[0.98] shadow-[0_0_28px_rgba(225,48,108,0.45)] group text-lg relative"
           >
-            <button className="px-10 py-5 rounded-full bg-white text-blue-950 font-bold hover:bg-cyan-50 transition-all hover:scale-105 active:scale-95 shadow-[0_0_30px_rgba(255,255,255,0.3)] flex items-center justify-center gap-3 group text-lg relative">
-              Falar com especialista agora
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-            </button>
+            Falar com especialista
+            <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
           </a>
         </motion.div>
       </div>

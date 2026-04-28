@@ -12,12 +12,12 @@ const problems = [
   {
     icon: <TrendingDown className="w-8 h-8 text-rose-500" />,
     title: "Leads Frios",
-    desc: "Falta de qualificação instantânea fazendo com que potenciais clientes esfriem antes mesmo do primeiro contato.",
+    desc: "Falta de qualificacao instantanea fazendo com que potenciais clientes esfriem antes mesmo do primeiro contato.",
   },
   {
     icon: <AlertTriangle className="w-8 h-8 text-rose-500" />,
-    title: "Inconsistência",
-    desc: "Erros humanos e atendimento variando com a demanda, gerando insatisfação e perda de vendas.",
+    title: "Inconsistencia",
+    desc: "Erros humanos e atendimento variando com a demanda, gerando insatisfacao e perda de vendas.",
   },
 ];
 
@@ -33,10 +33,10 @@ export default function Problems() {
           className="text-center max-w-2xl mx-auto mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
-            Por que as operações <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-red-400">travam?</span>
+            Por que as operacoes <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-red-400">travam?</span>
           </h2>
           <p className="text-slate-400 text-lg">
-            A maioria das empresas não perde dinheiro pela falta de produto, mas pela ineficiência nos processos diários.
+            A maioria das empresas nao perde dinheiro pela falta de produto, mas pela ineficiencia nos processos diarios.
           </p>
         </motion.div>
 
@@ -48,7 +48,7 @@ export default function Problems() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.15 }}
-              className="glass p-8 rounded-2xl border border-white/5 hover:border-rose-500/30 transition-colors group relative overflow-hidden"
+              className="glass p-8 rounded-2xl border border-white/5 hover:border-brand-pink/20 transition-colors group relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-rose-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               

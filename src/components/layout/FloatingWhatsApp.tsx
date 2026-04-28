@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
+import { contactLinks } from "@/lib/contact";
 
 export default function FloatingWhatsApp() {
   return (
@@ -15,7 +16,7 @@ export default function FloatingWhatsApp() {
       <span className="absolute w-[60px] h-[60px] bg-green-500 rounded-full animate-ping opacity-40 pointer-events-none" />
       
       <a
-        href="https://wa.me/seunumerodecontato"
+        href={contactLinks.whatsapp}
         target="_blank"
         rel="noopener noreferrer"
         className="relative flex items-center justify-center w-[60px] h-[60px] bg-green-500 hover:bg-green-400 text-white rounded-full shadow-[0_0_20px_rgba(34,197,94,0.5)] transition-all hover:scale-110 active:scale-95 z-50 pointer-events-auto"

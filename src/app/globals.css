@@ -1,19 +1,35 @@
+@import url("https://fonts.googleapis.com/css?family=Google+Sans:regular,500,600,700,italic,500italic,600italic,700italic");
 @import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-sora), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   
   --color-background: #030712;
   --color-foreground: #f8fafc;
   
-  --color-primary: #06b6d4;  /* Cyan 500 */
-  --color-primary-dark: #0891b2; /* Cyan 600 */
-  --color-primary-glow: rgba(6, 182, 212, 0.4);
-  
-  --color-secondary: #3b82f6; /* Blue 500 */
+  /* Brand palette — Instagram × TikTok × Telegram */
+  --color-primary: #E1306C;           /* Instagram / TikTok pink */
+  --color-primary-dark: #C42D61;      /* Darker pink */
+  --color-primary-glow: rgba(225, 48, 108, 0.4);
+
+  --color-secondary: #2AABEE;         /* Telegram blue */
+  --color-secondary-dark: #229ED9;
+
+  --color-accent-purple: #833AB4;     /* Instagram purple */
+  --color-accent-cyan: #00F2EA;       /* TikTok cyan */
+  --color-accent-orange: #F77737;     /* Instagram orange */
+
+  /* Tailwind utility aliases */
+  --color-brand-pink: #E1306C;
+  --color-brand-pink-dark: #C42D61;
+  --color-brand-blue: #2AABEE;
+  --color-brand-purple: #833AB4;
+  --color-brand-cyan: #00F2EA;
+  --color-brand-orange: #F77737;
   
   --color-card: rgba(255, 255, 255, 0.03);
   --color-card-border: rgba(255, 255, 255, 0.08);
@@ -40,6 +56,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
 @utility glass {
   background: var(--color-card);
   backdrop-filter: blur(12px);
@@ -53,8 +81,74 @@ body {
 }
 
 @utility text-gradient {
-  background: linear-gradient(to right, #06b6d4, #3b82f6);
+  background: linear-gradient(to right, #833AB4, #E1306C, #F77737);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+@utility text-gradient-blue {
+  background: linear-gradient(to right, #2AABEE, #00F2EA);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@utility text-logo-gradient {
+  background: linear-gradient(to right, #22c55e, #06b6d4, #3b82f6, #833AB4, #E1306C, #F77737);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@utility rainbow-border {
+  border-image: linear-gradient(to right, #22c55e, #06b6d4, #3b82f6, #833AB4, #E1306C, #F77737) 1;
+}
+
+/* ── shadcn / commerce theme CSS variable defaults ────────────────────────── */
+/* These are the fallback values used when no wrapper overrides them.         */
+/* Commerce light-theme overrides are applied via inline style on the wrapper */
+@layer base {
+  :root {
+    --background: var(--color-background);
+    --foreground: var(--color-foreground);
+    --primary:    var(--color-primary);
+    --primary-foreground: #ffffff;
+    --secondary:  rgba(255,255,255,0.06);
+    --secondary-foreground: var(--color-foreground);
+    --accent:     rgba(255,255,255,0.06);
+    --accent-foreground: var(--color-foreground);
+    --muted:      rgba(255,255,255,0.04);
+    --muted-foreground: rgba(255,255,255,0.45);
+    --border:     rgba(255,255,255,0.08);
+    --input:      rgba(255,255,255,0.08);
+    --ring:       var(--color-primary);
+    --radius:     0.625rem;
+  }
+}
+
+@keyframes navbar-bounce {
+  from, 20%, 53%, to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0);
+  }
+  40%, 43% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -8px, 0) scaleY(1.04);
+  }
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translate3d(0, -4px, 0) scaleY(1.02);
+  }
+  80% {
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translate3d(0, 0, 0) scaleY(0.98);
+  }
+  90% {
+    transform: translate3d(0, -2px, 0) scaleY(1.01);
+  }
+}
+
+@utility animate-navbar-bounce {
+  animation: navbar-bounce 3s ease-in-out infinite;
 }

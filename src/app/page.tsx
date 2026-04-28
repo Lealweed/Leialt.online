@@ -1,29 +1,33 @@
 import Navbar from "@/components/layout/Navbar";
-import Hero from "@/components/sections/Hero";
-import Problems from "@/components/sections/Problems";
-import Solutions from "@/components/sections/Solutions";
-import Niches from "@/components/sections/Niches";
-import Results from "@/components/sections/Results";
-import SocialProof from "@/components/sections/SocialProof";
-import Cta from "@/components/sections/Cta";
-import Footer from "@/components/layout/Footer";
+import VideoHero from "@/components/sections/VideoHero";
+import ScrollTopics from "@/components/sections/ScrollTopics";
+import CompanyInfo from "@/components/sections/CompanyInfo";
 import FloatingWhatsApp from "@/components/layout/FloatingWhatsApp";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col bg-background text-foreground relative selection:bg-cyan-500/30">
-      <Navbar />
-      
-      <Hero />
-      <Problems />
-      <Solutions />
-      <Niches />
-      <Results />
-      <SocialProof />
-      <Cta />
-      
-      <Footer />
-      <FloatingWhatsApp />
+    <main className="flex flex-col text-foreground">
+      {/* Fixed video background — visible through transparent sections */}
+      {/* eslint-disable-next-line jsx-a11y/media-has-caption */}
+      <video
+        className="fixed inset-0 w-full h-full object-cover"
+        style={{ zIndex: 0 }}
+        src="/video-HOME.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        aria-hidden="true"
+      />
+
+      {/* All content sits above the video */}
+      <div className="relative" style={{ zIndex: 10 }}>
+        <Navbar />
+        <VideoHero />
+        <ScrollTopics />
+        <CompanyInfo />
+        <FloatingWhatsApp />
+      </div>
     </main>
   );
 }
