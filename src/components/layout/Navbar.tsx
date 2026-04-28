@@ -3,10 +3,18 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { Menu } from "lucide-react";
 import { contactLinks } from "@/lib/contact";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+
+  const menuLinks = [
+    { href: "#topicos", label: "Soluções" },
+    { href: "#empresa", label: "Empresa" },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,19 +65,80 @@ export default function Navbar() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-          <a href="#topicos" className="hover:text-white transition-colors">
-            Soluções
-          </a>
-          <a href="#empresa" className="hover:text-white transition-colors">
-            Empresa
-          </a>
+          {menuLinks.map((item) => (
+            <a key={item.href} href={item.href} className="hover:text-white transition-colors">
+              {item.label}
+            </a>
+          ))}
         </nav>
 
         <div className="flex items-center gap-3">
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="md:hidden rounded-full border border-white/10 bg-black/20 text-white hover:bg-white/10 hover:text-white"
+                aria-label="Abrir menu"
+              >
+                <Menu className="h-5 w-5" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent
+              side="left"
+              className="w-[88vw] max-w-[320px] border-white/10 bg-[#070b12]/95 px-0 text-white backdrop-blur-xl"
+            >
+              <SheetHeader className="border-b border-white/10 px-5 pb-4 text-left">
+                <SheetTitle className="font-display text-xl font-extrabold tracking-tight text-white">
+                  Leialt.IA
+                </SheetTitle>
+              </SheetHeader>
+
+              <div className="flex flex-col gap-6 px-5 py-6">
+                <nav className="flex flex-col gap-2">
+                  {menuLinks.map((item) => (
+                    <a
+                      key={item.href}
+                      href={item.href}
+                      className="rounded-2xl border border-white/8 bg-white/[0.03] px-4 py-3 text-sm font-medium text-slate-200 transition-colors hover:border-white/15 hover:bg-white/[0.06] hover:text-white"
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </nav>
+
+                <Link
+                  href="/dashboard"
+                  className="flex items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-semibold text-white transition-transform hover:scale-[1.02] active:scale-[0.98]"
+                  style={{
+                    background: "linear-gradient(135deg, #833AB4, #E1306C)",
+                    boxShadow: "0 0 32px rgba(225,48,108,0.25)",
+                  }}
+                >
+                  Ver demo do dashboard
+                </Link>
+
+                <a
+                  href={contactLinks.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full px-4 py-3 text-center text-sm font-semibold text-white"
+                  style={{
+                    background: "linear-gradient(to right, #2AABEE, #06b6d4)",
+                    boxShadow: "inset 0 2px 4px 0 rgba(0,0,0,0.06)",
+                    fontFamily: "'Google Sans', sans-serif",
+                  }}
+                >
+                  Falar com especialista
+                </a>
+              </div>
+            </SheetContent>
+          </Sheet>
+
           {/* Dashboard demo button */}
           <Link
             href="/dashboard"
-            className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all hover:scale-105 active:scale-95"
+            className="hidden sm:flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold transition-all hover:scale-105 active:scale-95"
             style={{
               background: "rgba(255,255,255,0.05)",
               border: "1px solid rgba(255,255,255,0.12)",
@@ -89,7 +158,7 @@ export default function Navbar() {
             href={contactLinks.whatsapp}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-5 py-2.5 rounded-full text-sm font-semibold text-white animate-navbar-bounce hover:animate-none hover:scale-105 active:scale-95 transition-transform"
+            className="hidden md:inline-flex px-5 py-2.5 rounded-full text-sm font-semibold text-white animate-navbar-bounce hover:animate-none hover:scale-105 active:scale-95 transition-transform"
             style={{
               background: "linear-gradient(to right, #2AABEE, #06b6d4)",
               boxShadow: "inset 0 2px 4px 0 rgba(0,0,0,0.06)",
